@@ -1,0 +1,23 @@
+{
+  "name": "playwright-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesapc/playwright-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesapc/playwright-assignment/issues"
+  },
+  "homepage": "https://github.com/jamesapc/playwright-assignment#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
