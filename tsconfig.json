@@ -9,7 +9,7 @@
     "baseUrl": ".",
     "paths": {
       "@utils/*": ["./src/utils/*"],
-      "@types/*": ["./src/types/*"],
+      "@payloadTypes/*": ["./src/types/*"],
       "@builders/*": ["./src/builders/*"],
       "@commons/*": ["./src/commons/*"],
       "@fixtures/*": ["./src/fixtures/*"],

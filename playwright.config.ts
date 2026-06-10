@@ -1,6 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 import { register } from "tsconfig-paths";
 import { compilerOptions } from "./tsconfig.json";
+import dotenv from "dotenv";
+dotenv.config();
 register({ baseUrl: ".", paths: compilerOptions.paths });
 
 /**
@@ -34,6 +36,11 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: "api",
+      testMatch: /.*\/api\/.*\.spec\.ts/,
+    },
+
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },

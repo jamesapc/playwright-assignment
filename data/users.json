@@ -1,0 +1,13 @@
+[
+  {
+    "test_id": "TC-API-USER-02",
+    "name": "Tenali Ramakrishna",
+    "gender": "male",
+    "status": "active"
+  },
+  {
+    "test_id": "TC-API-USER-05",
+    "name": "Updated Name",
+    "status": "inactive"
+  }
+]

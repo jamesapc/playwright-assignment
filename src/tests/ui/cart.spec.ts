@@ -61,4 +61,42 @@ test.describe("Cart — Add Items", () => {
     // Only 2 Remove buttons remain
     await expect(cart.allRemoveButtons).toHaveCount(2);
   });
+
+  test("TC-CART-03: Add items, verify in cart page, remove all, return to inventory — badge gone", async ({ page }) => {
+    const cart = new CartLocators(page);
+
+    // Add 3 items from inventory
+    for (const product of itemsToAdd) {
+      await cart.addToCartButton(product.slug).click();
+    }
+    await expect(cart.cartBadge).toHaveText("3");
+
+    // Navigate to cart page
+    await cart.cartLink.click();
+    await expect(page).toHaveURL("/cart.html");
+
+    // Verify each added item appears in the cart with correct name and price
+    for (const product of itemsToAdd) {
+      const item = cart.cartItems.filter({
+        has: page.locator('[data-test="inventory-item-name"]', { hasText: product.name }),
+      });
+      await expect(cart.cartItemName(item)).toHaveText(product.name);
+      await expect(cart.cartItemPrice(item)).toHaveText(`$${product.price.toFixed(2)}`);
+    }
+
+    // Remove all items from cart
+    for (const product of itemsToAdd) {
+      await cart.cartRemoveButton(product.slug).click();
+    }
+
+    // Cart should be empty
+    await expect(cart.cartItems).toHaveCount(0);
+
+    // Go back to inventory
+    await cart.continueShoppingButton.click();
+    await expect(page).toHaveURL("/inventory.html");
+
+    // Cart badge should not be visible
+    await expect(cart.cartBadge).not.toBeVisible();
+  });
 });

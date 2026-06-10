@@ -31,4 +31,29 @@ export class CartLocators {
   get allRemoveButtons(): Locator {
     return this.page.locator('button[data-test^="remove"]');
   }
+
+  // Cart page — item rows
+  get cartItems(): Locator {
+    return this.page.locator('[data-test="inventory-item"]');
+  }
+
+  // Cart page — item name inside a cart item row
+  cartItemName(item: Locator): Locator {
+    return item.locator('[data-test="inventory-item-name"]');
+  }
+
+  // Cart page — item price inside a cart item row
+  cartItemPrice(item: Locator): Locator {
+    return item.locator('[data-test="inventory-item-price"]');
+  }
+
+  // Cart page — remove button inside a cart item row (by slug)
+  cartRemoveButton(slug: string): Locator {
+    return this.page.locator(`[data-test="remove-${slug}"]`);
+  }
+
+  // Cart page — continue shopping button
+  get continueShoppingButton(): Locator {
+    return this.page.locator('[data-test="continue-shopping"]');
+  }
 }
